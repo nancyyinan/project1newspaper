@@ -588,21 +588,24 @@ button:hover {
   font-family: "Times New Roman", serif;
 }
 .card-link {
- 
   text-decoration: none;
+  transition: transform 0.2s ease-in-out;
 }
 .card-link:hover {
-
-  animation: shake 0.4s ease; /* 0.4秒的摇晃 */
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
 }
 /* 响应式：小屏时上下堆叠 */
-
 
 @media (max-width: 900px) {
   .main-content {
     column-count: 2; /* 改成一列 */
 
     padding: 0.8rem; /* 内边距,防止文字贴边 */
+  }
+  .reading-card {
+    width: 80%;
+    margin-bottom: 1rem;
   }
 }
 
@@ -668,4 +671,3 @@ button:hover {
   width: 800px;
   padding: 40px 0;
 }
-
