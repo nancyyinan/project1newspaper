@@ -490,7 +490,6 @@ button:hover {
 }
 /* 页脚，黑色背景，居中对齐 */
 
-
 .main-content p {
   font-size: 1.3rem;
   margin-top: 0; /* 确保段落上方没有额外的间距 */
@@ -603,12 +602,7 @@ button:hover {
 /* @media (max-width: 900px) {
   .main-content {
     column-count: 2;
-
     padding: 0.8rem;
-  }
-  .reading-card {
-    width: 80%;
-    margin-bottom: 1rem;
   }
 } */
 
@@ -637,7 +631,6 @@ button:hover {
     flex-direction: column;
     align-items: center;
   }
-  
 }
 
 .hidden {
@@ -647,8 +640,8 @@ button:hover {
 /* 镜头容器：一个圆形可视窗口，overflow: hidden */
 .magnifier {
   position: absolute;
-  width: 150px;
-  height: 150px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   border: 2px solid #ccc;
   overflow: hidden;
@@ -670,5 +663,4 @@ button:hover {
   /* 和原 content 一样的宽度排版 */
   width: 800px;
   padding: 40px 0;
-  
 }
