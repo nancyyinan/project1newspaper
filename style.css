@@ -107,7 +107,7 @@
 }
 
 .main-header2 h1 {
-  font-family: "GT Haptik", sans-serif;
+  font-family: "Reforma1918", sans-serif;
   font-weight: 900;
   font-style: normal;
   font-size: 4rem;
@@ -510,7 +510,7 @@ button:hover {
 .footer-black a {
   font-family: "GT Haptik", sans-serif;
   font-weight: 900;
-  font-style: italic;
+  /* font-style: italic; */
   color: #fff;
   text-decoration: none;
   font-weight: bold;
@@ -519,6 +519,84 @@ button:hover {
 .footer-black a:hover {
   text-decoration: underline;
 }
+
+.choice-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+/* 通用卡片结构 - 给定一个高度做演示 */
+.reading-card {
+  width: 300px;
+  height: 400px;
+  border: 1px solid #ccc; /* 可选 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden; /* 让内部文字不超出盒子 */
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 让内部文字居中或顶部对齐，视需求 */
+}
+
+/* 左卡片：黑底 + 大白字 */
+.left-card {
+  font-family: "Reforma1918", sans-serif;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+}
+
+.left-card h2 {
+  font-size: 2rem; /* 大字 */
+  margin: 0;
+  text-transform: uppercase; /* 可选，让文字变大写 */
+  line-height: 1.2;
+}
+.author-credit {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-style: italic; /* 或其他样式 */
+}
+
+/* 右卡片：白底 + 小字，可做报纸排版 */
+.right-card {
+  font-family: "Reforma1918", sans-serif;
+  background-color: #faf8f3; /* 近似旧纸颜色 */
+  color: #333;
+  text-align: left;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  /* 如果想做多列排版，可以加: 
+ column-count: 2;
+ column-gap: 1rem;
+*/
+}
+.right-card h3 {
+  margin-top: 0;
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.right-card p {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  line-height: 1;
+  font-family: "Times New Roman", serif;
+}
+.card-link {
+ 
+  text-decoration: none;
+}
+.card-link:hover {
+
+  animation: shake 0.4s ease; /* 0.4秒的摇晃 */
+}
+/* 响应式：小屏时上下堆叠 */
+
 
 @media (max-width: 900px) {
   .main-content {
@@ -547,6 +625,15 @@ button:hover {
   .main-content {
     column-count: 1; /* 改成一列 */
     margin: 1rem;
+  }
+
+  .choice-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .reading-card {
+    width: 80%;
+    margin-bottom: 1rem;
   }
 }
 
@@ -582,53 +669,3 @@ button:hover {
   padding: 40px 0;
 }
 
-/* 容器：并排两张卡片 */
-.choice-container {
-  display: flex; /* 启用弹性布局 */
-  justify-content: center; /* 水平居中 */
-  align-items: flex-start; /* 顶部对齐 */
-  gap: 2rem; /* 卡片之间的距离 */
-  padding: 1rem;
-}
-
-/* 卡片样式 */
-.reading-card {
-  background: #ddd; /* 浅灰背景 */
-  width: 200px; /* 卡片宽度，可调 */
-  height: 200px; /* 卡片高度，可调 */
-  display: flex;
-  flex-direction: column; /* 竖直排布标题、按钮 */
-  justify-content: center; /* 垂直居中 */
-  align-items: center; /* 水平居中 */
-  border: 1px solid #ccc; /* 边框 */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s;
-  text-align: center;
-  cursor: pointer; /* 鼠标变小手 */
-}
-
-/* 悬停时稍微变亮 */
-.reading-card:hover {
-  background: #ccc;
-}
-
-/* 标题 */
-.reading-card h2 {
-  margin: 0;
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
-  color: #333;
-}
-
-/* 链接按钮 */
-.card-link {
-  display: inline-block;
-  background: #333;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  border-radius: 4px;
-}
-.card-link:hover {
-  background: #000;
-}
