@@ -1,0 +1,634 @@
+@font-face {
+  font-family: "GT Haptik";
+  src: url("./fonts/GT-Haptik-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GT Haptik";
+  src: url("./fonts/GT-Haptik-Black-Rotalic.woff2") format("woff2");
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "GT Haptik";
+  src: url("./fonts/GT-Haptik-Bold-Rotalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "GT Haptik";
+  src: url("./fonts/GT-Haptik-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GT Haptik";
+  src: url("./fonts/GT-Haptik-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GT Haptik";
+  src: url("./fonts/GT-Haptik-Regular-Rotalic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Odile";
+  src: url("./fonts/Odile-Book-TRIAL.otf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Odile";
+  src: url("./fonts/Odile-Bold-TRIAL.otf");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "UtileDisplay";
+  src: url("./fonts/UtileDisplay-Semibold-TRIAL.otf");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "UtileDisplay";
+  src: url("./fonts/UtileDisplay-Regular-TRIAL.otf");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "UtileDisplay";
+  src: url("./fonts/UtileDisplay-Book-TRIAL.otf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Reforma1918";
+  src: url("./fonts/Reforma1918-Blanca.woff");
+  font-weight: 400;
+}
+
+.top-bar {
+  display: flex; /* 启用弹性盒子 */
+  justify-content: space-between; /* 左右两端对齐 */
+  align-items: center; /* 垂直居中对齐 */
+  padding: 0.5rem 2rem; /* 内边距，上下0.5rem，左右2rem */
+  border-bottom: 1px solid #ccc; /* 底部边框线 */
+  background-color: #fff; /* 背景(可选) */
+}
+
+.top-bar p {
+  margin: 0; /* 去掉<p>的默认外边距 */
+  font-family: "GT Haptik", sans-serif;
+  font-weight: 400; /* 根据需要设置字重 */
+  font-style: normal;
+  font-size: 0.8rem; /* 字号可自行调整 */
+  color: #000; /* 文字颜色 */
+}
+
+.main-header h1 {
+  font-family: "Reforma1918", sans-serif;
+  font-weight: 900;
+  /* font-style: italic; */
+  font-size: 4rem;
+  text-align: center;
+  margin: 2rem;
+  padding-bottom: 0.2em;
+  border-bottom: 0.041em solid;
+  padding: 1rem;
+}
+
+.main-header2 h1 {
+  font-family: "GT Haptik", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 4rem;
+  text-align: center;
+  margin: 2rem;
+  padding-bottom: 0.2em;
+  border-bottom: 0.041em solid;
+  padding: 1rem;
+}
+
+.news-block h2 {
+  font-family: "Odile", serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 1.5rem;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.headline-container {
+  position: relative;
+  width: 100%; /* 与卡片一样宽 */
+  overflow: hidden; /* 关键：隐藏超出的部分 */
+  white-space: nowrap; /* 不自动换行 */
+  /* optional: 给它一个固定的高度，以免内部文本过高 */
+  height: 2em;
+  line-height: 2em;
+}
+
+/* 真正滚动的文字 */
+.headline {
+  display: inline-block; /* 必须inline-block或block，才能用transform位移 */
+  white-space: nowrap; /* 避免多行折行 */
+}
+
+/* 当鼠标移到.news-block或.headline-container时，让文字滚动 */
+.news-block:hover .headline {
+  animation: scrollText 5s linear infinite;
+}
+
+/* 关键帧：从右到左 */
+@keyframes scrollText {
+  0% {
+    transform: translateX(0); /* 一开始文字左对齐容器，完全可见 */
+  }
+  10% {
+    transform: translateX(0); /* 前 10% 时间保持不动 */
+  }
+  100% {
+    transform: translateX(-100%); /* 最后移到 -100% ，完全滚出 */
+  }
+}
+/* .news-block[data-news-id~="3"] h2,
+.news-block[data-news-id~="6"] h2,
+.news-block[data-news-id~="9"] h2,
+.news-block[data-news-id="12"] h2 {
+  font-size: 3vw;
+  text-transform: uppercase; 
+  padding-top: 0rem;
+} */
+
+.news-block p {
+  font-family: "Odile";
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.3rem;
+  line-height: 130%;
+  text-align: left;
+  color: rgb(94, 94, 94);
+  margin-top: 0;
+}
+
+.news-container {
+  margin: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.news-block {
+  flex-grow: 1;
+  flex-basis: 20%;
+  min-width: 200px;
+  background-color: #eee;
+  cursor: pointer;
+  transition: 0.2s ease background-color;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  padding: 0rem 1.5rem 2rem 1.5rem;
+  border: 2px solid black;
+}
+.news-block:hover {
+  background-color: #bfbfbf;
+  animation: shake 0.4s ease; /* 0.4秒的摇晃 */
+  cursor: url("./cursor.svg"), pointer;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-1deg);
+  }
+  40% {
+    transform: rotate(1deg);
+  }
+  60% {
+    transform: rotate(-1deg);
+  }
+  80% {
+    transform: rotate(1deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+.news-block[data-news-id="3"] {
+  flex-basis: 20%; /* 让 ID 3 的 block 宽度增加 */
+}
+
+.news-block[data-news-id="6"] {
+  flex-basis: 30%; /* 让 ID 3 的 block 宽度增加 */
+}
+
+.news-block[data-news-id="9"] {
+  flex-basis: 25%; /* 让 ID 3 的 block 宽度增加 */
+}
+
+.news-block[data-news-id="12"] {
+  flex-basis: 30%; /* 让 ID 3 的 block 宽度增加 */
+}
+
+/* 隐藏和显示控制 */
+.hidden {
+  display: none;
+}
+
+/* 弹窗及遮罩 */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 50;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  background: #111;
+  color: #fff;
+  padding: 2rem;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+/* 当所有区块都被阅读后出现的按钮 */
+.center-button {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 200;
+  background: #000;
+  color: #fff;
+  padding: 1rem 2rem;
+  text-align: center;
+  font-size: 1.2rem;
+}
+.center-button a {
+  color: #fff;
+  text-decoration: none;
+}
+
+button {
+  font-family: "GT Haptik", sans-serif; /* 或其他字体 */
+  font-weight: 400;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #333;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  /* transition: background-color 0.2s; */
+}
+
+.modal {
+  /* 您已有的定位等可保留 */
+  background: #111;
+  color: #fff;
+  padding: 2rem;
+
+  /* 如果想要圆角、阴影等可加 */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+button:hover {
+  background-color: #555;
+  transition: background-color 0.2s;
+}
+
+/* button,
+.modal p,
+#article-content {
+  margin-top: 1rem;
+} */
+
+#article-content {
+  font-family: "UtileDisplay"; /* 或您喜欢的字体 */
+  font-weight: 600;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  /* 如果希望有滚动，或者高度固定也可加 */
+  max-height: 500px;
+  overflow-y: auto;
+  /* 背景、内边距等 */
+  background-color: #222;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+#prompt-text {
+  text-align: center;
+  font-family: "UtileDisplay", sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+}
+
+.button-group {
+  display: flex; /* 启用弹性布局 */
+  justify-content: center; /* 水平居中 */
+  gap: 1rem; /* 按钮之间留点间距 */
+  margin-top: 1rem; /* 与上方文字拉开距离 */
+}
+
+/* .button-group button {
+  font-family: "UtileDisplay", sans-serif;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  background: #444;
+  color: #fff;
+  border: none;
+} */
+
+#finish-btn {
+  font-family: "UtileDisplay", sans-serif;
+  font-weight: 800;
+  display: block;
+  margin: 3rem auto 0;
+  background: #333;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1rem;
+}
+
+#finish-btn:hover {
+  background-color: #666 !important;
+}
+
+#all-read-button {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 200;
+  background: #000;
+  padding: 2rem 4rem;
+  text-align: center;
+}
+
+#all-read-button a {
+  font-family: "UtileDisplay", sans-serif;
+  font-weight: 800;
+  align-items: center;
+  display: inline-block; /* 让a能有固定大小 */
+  color: #fff;
+  padding: 0.5rem 1rem;
+  text-decoration: none; /* 去下划线 */
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+.highlight-button {
+  background-color: rgb(47, 47, 47); /* 红色 */
+  color: white;
+  font-weight: bold;
+}
+.highlight-button:hover {
+  background-color: #555;
+}
+
+button:hover {
+  background-color: #555; /* 悬停时变亮 */
+}
+
+#skip-btn {
+  display: block;
+  margin: 2rem auto; /* 上下2rem, 左右auto => 居中 */
+  background: #000; /* 黑底 */
+  color: #fff; /* 白字 */
+  padding: 3rem;
+  border: none;
+  cursor: pointer;
+  font-family: "UtileDisplay", sans-serif; /* 可换成你的字体 */
+  font-weight: 800;
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 20rem;
+}
+
+.black-box h2 {
+  font-family: "GT Haptik", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 10vw;
+  text-align: center;
+  margin: 0.2rem;
+  padding: 0.1rem;
+}
+
+.black-box {
+  background-color: black; /* 背景黑色 */
+  color: white; /* 文字白色 */
+  text-align: center; /* 居中对齐 */
+  margin: 2rem;
+  padding: 4rem;
+  line-height: 880%;
+}
+
+/* 链接样式 */
+.black-box a {
+  color: white; /* 链接也用白色 */
+  text-decoration: none; /* 去掉下划线 */
+}
+.black-box a:hover {
+  text-decoration: underline; /* 悬停时显示下划线 */
+}
+
+/* 如果想让中间字稍微倾斜(italic)或有其他效果，可以加单独选择器 */
+.black-box h2.slower {
+  font-style: italic;
+}
+
+.main-content {
+  column-count: 3; /* 4列布局 */
+  column-gap: 3.4rem;
+
+  font-family: "Odile", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.1rem;
+
+  margin: 2rem 6rem 9rem 6rem; /* 自动左右外边距,使其居中 */
+  padding: 2rem; /* 内边距,防止文字贴边 */
+  /* 行距可在body或此处设:
+     line-height: 1.8; 
+  */
+  color: #333;
+}
+
+.main-content {
+  margin-bottom: 1rem; /* 段落间距 */
+  text-align: justify;
+}
+/* 页脚，黑色背景，居中对齐 */
+.footer-black {
+  background-color: #000;
+  text-align: center;
+  padding: 2rem;
+  margin-top: 10rem;
+  /* 无边框, 可以自由调，如果想完全无边框就不写border */
+}
+
+.main-content p {
+  font-size: 1.3rem;
+  margin-top: 0; /* 确保段落上方没有额外的间距 */
+  text-indent: 0; /* 取消缩进 */
+  hyphens: auto; /* 让浏览器自动断词 */
+  -webkit-hyphens: auto; /* 兼容 Safari */
+  -moz-hyphens: auto; /* 兼容 Firefox */
+  word-break: break-word; /* 避免超长单词溢出 */
+}
+/* Footer里的链接设为白色 */
+.footer-black a {
+  font-family: "GT Haptik", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 2.2rem;
+}
+.footer-black a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .main-content {
+    column-count: 2; /* 改成一列 */
+
+    padding: 0.8rem; /* 内边距,防止文字贴边 */
+  }
+}
+
+@media (max-width: 600px) {
+  .top-bar p {
+    font-size: 0.6rem; /* 字号可自行调整 */
+  }
+  .main-header h1 {
+    font-size: 3rem;
+  }
+
+  .main-header2 h1 {
+    font-size: 3rem;
+  }
+
+  .black-box {
+    line-height: 480%;
+  }
+
+  .main-content {
+    column-count: 1; /* 改成一列 */
+    margin: 1rem;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+/* 镜头容器：一个圆形可视窗口，overflow: hidden */
+.magnifier {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 9999;
+
+  /* 关键：加一个不透明背景，覆盖原文 */
+  background-color: #fff; /* 或自己想要的颜色 */
+}
+/* 放大内容外层，用来整体平移+缩放 */
+.magnified {
+  position: relative;
+  /* transform-origin 默认中心，这里我们需要左上 */
+  transform-origin: top left;
+}
+
+/* 放大内容本身可再做一些基本样式调整 */
+.magnified-content {
+  /* 和原 content 一样的宽度排版 */
+  width: 800px;
+  padding: 40px 0;
+}
+
+/* 容器：并排两张卡片 */
+.choice-container {
+  display: flex; /* 启用弹性布局 */
+  justify-content: center; /* 水平居中 */
+  align-items: flex-start; /* 顶部对齐 */
+  gap: 2rem; /* 卡片之间的距离 */
+  padding: 1rem;
+}
+
+/* 卡片样式 */
+.reading-card {
+  background: #ddd; /* 浅灰背景 */
+  width: 200px; /* 卡片宽度，可调 */
+  height: 200px; /* 卡片高度，可调 */
+  display: flex;
+  flex-direction: column; /* 竖直排布标题、按钮 */
+  justify-content: center; /* 垂直居中 */
+  align-items: center; /* 水平居中 */
+  border: 1px solid #ccc; /* 边框 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s;
+  text-align: center;
+  cursor: pointer; /* 鼠标变小手 */
+}
+
+/* 悬停时稍微变亮 */
+.reading-card:hover {
+  background: #ccc;
+}
+
+/* 标题 */
+.reading-card h2 {
+  margin: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+/* 链接按钮 */
+.card-link {
+  display: inline-block;
+  background: #333;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.card-link:hover {
+  background: #000;
+}

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Newspaper?</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="top-bar">
+      <p class="left-text">
+        The Urgent Quest for Slower, Better News | By Michael Luo
+      </p>
+      <p class="right-text">April 10, 2019</p>
+    </header>
+
+    <header class="main-header">
+      <h1>Newspaper?</h1>
+    </header>
+
+    <div class="news-container">
+      <div class="news-block" data-news-id="1">
+        <h2 class="headline-container">
+          <span class="headline"
+            >I Tried a Shocking "Media Diet" — Here’s What Happened!</span
+          >
+        </h2>
+        <p>
+          She thought she knew the news… until she realized her daily habit was
+          failing her.
+        </p>
+      </div>
+
+      <div class="news-block" data-news-id="2">
+        <h2 class="headline-container">
+          <span class="headline"
+            >The Print Comeback? Breakfast Ritual That Changed Everything</span
+          >
+        </h2>
+        <p>
+          Old-school newspapers over breakfast—can it really fix your fragmented
+          brain?
+        </p>
+      </div>
+
+      <div class="news-block" data-news-id="3">
+        <h2 class="headline-container">
+          <span class="headline"
+            >Addicted to Your Phone? One Author’s Bold Claim About Tech
+            ‘Traps’</span
+          >
+        </h2>
+        <p>
+          Discover the hidden feedback loops designed to keep you scrolling
+          forever!
+        </p>
+      </div>
+
+      <div class="news-block" data-news-id="4">
+        <h2 class="headline-container">
+          <span class="headline"
+            >Ten Sites a Day, Ten Times Each—Are You Trapped in the ‘Lucrative
+            Tic’?</span
+          >
+        </h2>
+        <p>
+          Constantly refreshing multiple news sources? It might be filling
+          wallets—just not yours.
+        </p>
+      </div>
+
+      <div class="news-block" data-news-id="5">
+        <h2 class="headline-container">
+          <span class="headline">
+            Overload Alert: Why 2008’s ‘Too Much Information’ Now Seems Quaint
+          </span>
+        </h2>
+        <p>
+          BlackBerry dominance, no retweets, and no BuzzFeed—was that truly the
+          simpler era?
+        </p>
+      </div>
+
+      <div class="news-block" data-news-id="6">
+        <h2 class="headline-container">
+          <span class="headline">
+            Shrinking Attention for News: The Battle Platforms Are Forcing on
+            Media</span
+          >
+        </h2>
+        <p>
+          With Facebook and Google monopolizing our screens, can traditional
+          outlets survive?
+        </p>
+      </div>
+
+      <div class="news-block" data-news-id="7">
+        <h2 class="headline-container">
+          <span class="headline">
+            Real-Time Click-Tracking Nightmare: Is Our News ‘Data-Led’ Instead
+            of ‘Data-Informed’?</span
+          >
+        </h2>
+        <p>
+          Advanced analytics rule modern journalism—but when does the chase for
+          clicks go too far?
+        </p>
+      </div>
+
+      <div class="news-block" data-news-id="8">
+        <h2 class="headline-container">
+          <span class="headline">
+            “Drive-By Traffic”: The Secret Revenue Engine That Powers
+            Clickbait</span
+          >
+        </h2>
+        <p>
+          Each quick visit makes someone money—are you just a pawn in the
+          ad-driven scramble?
+        </p>
+      </div>
+
+      <div class="news-block" data-news-id="9">
+        <h2 class="headline-container">
+          <span class="headline">
+            Paywalls vs. Page Views? Why One Visionary Says Subscriptions Will
+            Save News</span
+          >
+        </h2>
+        <p>
+          Is chasing loyal fans the only way to survive in the era of endless
+          viral headlines?
+        </p>
+      </div>
+
+      <div class="news-block" data-news-id="10">
+        <h2 class="headline-container">
+          <span class="headline">
+            The Metered Paywall Trap: Free Samples, Funnel Tactics, and Pushing
+            ‘Trending’ Content</span
+          >
+        </h2>
+        <p>
+          Even subscriptions rely on Google and Facebook—can we ever break free
+          of trending tyranny?
+        </p>
+      </div>
+
+      <div class="news-block" data-news-id="11">
+        <h2 class="headline-container">
+          <span class="headline">
+            Too Many Headlines, Too Little Depth? Why Our “Different”
+            Understanding May Hurt Us</span
+          >
+        </h2>
+        <p>
+          Flooded with news or simply bored? One professor questions if volume
+          kills true awareness.
+        </p>
+      </div>
+
+      <div class="news-block" data-news-id="12">
+        <h2 class="headline-container">
+          <span class="headline">
+            The ‘Monitorial Citizen’ and the Danger of False Alarms: Are We
+            Really Informed?</span
+          >
+        </h2>
+        <p>
+          Shallow knowledge, strong opinions—discover how illusions, panic, and
+          social media collide.
+        </p>
+      </div>
+    </div>
+
+    <div id="overlay" class="overlay hidden"></div>
+
+    <div id="prompt-modal" class="modal hidden">
+      <p id="prompt-text">Are you sure you want to read this?</p>
+
+      <div class="button-group">
+        <button id="cancel-btn">No, take me back</button>
+        <button id="continue-btn">Yes, continue</button>
+      </div>
+    </div>
+
+    <div id="content-modal" class="modal hidden">
+      <div id="article-content"></div>
+      <button id="finish-btn" class="highlight-button">
+        I finished reading it!
+      </button>
+    </div>
+
+    <!-- 当所有block都消失后出现的按钮 -->
+    <div id="all-read-button" class="hidden center-button">
+      <!-- 跳转到新的HTML文件，比如 final.html -->
+      <button><a href="endpage.html">What's more?</a></button>
+    </div>
+
+    <button id="skip-btn">I don’t want to read these!</button>
+
+    <script src="script.js"></script>
+  </body>
+</html>
