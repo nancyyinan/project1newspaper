@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Magnifier with 3-Column Layout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* 全局样式 */
+      body {
+        background: #faf8f3;
+      }
+
+      /* ---------------------------
+       1) 原文的多列布局核心样式
+       --------------------------- */
+      .main-content {
+        /* 3列布局 */
+        column-count: 3;
+        column-gap: 2.5rem;
+
+        width: 1200px; /* 固定宽度示例（可根据你需求修改） */
+        margin: 2rem auto; /* 居中 */
+      }
+
+      .main-content p {
+        margin: 0 0 1rem 0;
+      }
+
+      /* 小屏幕下变成1列 */
+      @media (max-width: 600px) {
+        .main-content {
+          width: auto; /* 宽度自适应 */
+          margin: 1rem; /* 适当留点边距 */
+          column-count: 1; /* 一列 */
+        }
+      }
+
+      /* ---------------------------
+       2) 放大镜样式
+       --------------------------- */
+      .magnifier {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        border: 2px solid #ccc;
+        overflow: hidden;
+        pointer-events: none;
+        display: none; /* 默认隐藏 */
+        z-index: 9999;
+
+        background-color: #fff;
+      }
+
+      .magnified {
+        position: relative;
+        transform-origin: top left;
+      }
+
+      /* 
+       放大镜里的内容同样要使用 .main-content 的排版规则，
+       这样它也会是3列、同样的字体等。
+    */
+
+      .footer-black a {
+        font-family: "GT Haptik", sans-serif;
+        font-weight: 900;
+        /* font-style: italic; */
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 2.2rem;
+      }
+      .footer-black {
+        background-color: #faf8f3;
+        border-top: 1px solid black;
+        text-align: center;
+        padding: 2rem;
+        margin-top: 10rem;
+        /* 无边框, 可以自由调，如果想完全无边框就不写border */
+      }
+      .footer-black a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="top-bar">
+      <p class="left-text">By Michael Luo</p>
+      <p class="right-text">April 10, 2019</p>
+    </header>
+
+    <header class="main-header2">
+      <h1>The Urgent Quest for Slower, Better News</h1>
+    </header>
+
+    <!-- 原文内容容器 -->
+    <div class="main-content" id="originalContent">
+      <p>
+        Last month, I decided to try an experiment with my media diet. Usually,
+        in the morning, I skim e-mail newsletters in my in-box, scroll through
+        my Twitter feed, and peruse the news apps on my phone; later, in the
+        office, I tap through my notifications and monitor more than a dozen
+        news-related apps, including Facebook and Twitter, while juggling other
+        tasks.
+      </p>
+
+      <p>
+        I usually feel as though I’m managing to stay abreast of the day’s
+        biggest news stories, but my reading tends to be fragmentary—I’m only
+        skimming a story or absorbing a partial update. I haven’t stopped
+        getting my news in this way, but I’m trying to change my ways to a
+        certain extent.
+      </p>
+
+      <p>
+        I’ve adopted a new ritual: reading the print edition of the New York
+        Times over breakfast and on my commute. Since the early two-thousands,
+        when I was a cub reporter at the Times, I’ve had the newspaper delivered
+        daily to my door, but, as I’ve started getting more and more of my news
+        online, I’ve been neglecting it. Having returned to spending
+        uninterrupted time with the print newspaper each morning, I’m engaging
+        with the news in a more focussed way.
+      </p>
+
+      <p>
+        Certainly, I’m able to read more broadly. I’ve read articles that
+        weren’t in my social-media feeds, or that I missed while scrolling
+        through my apps: reporting on efforts to make Copenhagen a
+        carbon-neutral city, on talks between the United States and the Taliban,
+        on a new study that found that the size of bullets affects mortality
+        rates in shootings. It seems to me that I’ve become better informed.
+      </p>
+
+      <p>
+        Many people have tried such experiments, of course. And much has been
+        made of how being tethered to our phones affects everything from our
+        attention spans to our psychological well-being.
+      </p>
+
+      <p>
+        In his new book, “Digital Minimalism: Choosing a Focused Life in a Noisy
+        World,” Cal Newport, a computer-science professor at Georgetown
+        University, marshals evidence that the addictive properties of our
+        devices are not accidental but, rather, the product of careful thinking
+        by tech companies about the feedback loops that will keep people
+        returning to them.
+      </p>
+
+      <p>
+        Newport’s main indictment is of social-media platforms, but he also
+        argues that people need to rethink the way they consume news.
+      </p>
+
+      <p>
+        Exposure to the online torrent of “incomplete, redundant, and often
+        contradictory” information that now invariably follows a major news
+        event is counterproductive and leaves us less informed, he writes. Even
+        when nothing earth-shattering is happening on a given day, he continues,
+        people follow a compulsive pattern of media consumption, triggered by
+        any hint of boredom.
+      </p>
+
+      <p>
+        “If you’re interested in politics, for example, and lean toward the left
+        side of the political spectrum, this sequence might go from CNN.com, to
+        the New York Times home page, to Politico, to the Atlantic, to your
+        Twitter feed, and finally to your Facebook timeline,” he explains.
+        Techies might add Hacker News and Reddit; sports fans, ESPN. Media
+        companies profit from this “lucrative tic.”
+      </p>
+
+      <p>
+        “Checking ten different sites ten times a day makes them money, even if
+        it doesn’t leave you more informed than checking one good site once a
+        day,” he concludes.
+      </p>
+
+      <p>
+        In the recent book “Slow Media: Why ‘Slow’ is Satisfying, Sustainable,
+        and Smart,” the journalist and media scholar Jennifer Rauch traces a
+        movement that began to coalesce about a decade ago.
+      </p>
+
+      <p>
+        In 2010, a document called “The Slow Media Manifesto” was published,
+        online, by Sabria David, Jörg Blumtritt, and Benedikt Köhler—a trio of
+        Germans with backgrounds in media and technology. It urged both
+        journalists and readers to draw inspiration from the Slow Food movement,
+        which emphasizes quality and timelessness.
+      </p>
+
+      <p>
+        “Slow Media are not about fast consumption but about choosing the
+        ingredients mindfully and preparing them in a concentrated manner,” the
+        authors wrote. “Slow Media cannot be consumed casually, but provoke the
+        full concentration of their users.
+      </p>
+
+      <p>
+        As with the production of a good meal, which demands the full attention
+        of all senses by the cook and his guests, Slow Media can only be
+        consumed with pleasure in focused alertness.”
+      </p>
+
+      <p>
+        Rauch points to the U.K.-based quarterly Delayed Gratication, which was
+        established in 2011, as an example of Slow Media in action. Delayed
+        Gratication, which has a Web site but is primarily print-based,
+        describes itself as “the world’s first Slow Journalism magazine.” It
+        promises to revisit “the events of the previous three months to see what
+        happened after the dust settled and the news agenda moved on” and
+        declares itself “proud to be ‘Last to Breaking News.’” Meanwhile,
+        earlier this year, James Harding, the former director of news and
+        current affairs at the BBC; Katie Vanneck-Smith, the former president of
+        Dow Jones; and Matthew Barzun, the former U.S. Ambassador to the United
+        Kingdom, launched Tortoise Media, which aims to publish five digital
+        stories a day, along with a quarterly print magazine. Tortoise was
+        formed as a direct response to the overwhelming amount of “daily noise”
+        in the news ecosystem. “The problem isn’t just fake news or junk news,”
+        a statement on the Web site says, “because there’s a lot of good—it’s
+        just that there’s so much of it and so much of it is the same.
+      </p>
+
+      <p>
+        In a hurry, partial, and confusing. Too many newsrooms chasing the news,
+        but missing the story.”
+      </p>
+
+      <p>
+        Could journalism in general get slower? As I read about the Slow Media
+        movement, I inevitably thought about trends in the magazine industry in
+        the United States, where publications are experimenting with paywalls
+        and churning out digital content. The appeal of Slow Media is that it
+        pushes back against the technological pressures that are shaping
+        journalism more broadly. It is an attempt to take back control of the
+        way we experience the news. It is also about relinquishing the illusion
+        of knowledge that the passive consumption of news on social media
+        facilitates and bringing our best selves to the act of becoming
+        informed.
+      </p>
+
+      <p>
+        The challenge for all media organizations, slow or not, is to chart an
+        economically sustainable, responsible course through this landscape of
+        conflicting incentives and ideals. The pressures for speed and volume
+        created by the digital age can’t be ignored—but they can be resisted.
+        Even as publishers try to move more quickly, they can still ask
+        themselves whether granular coverage in a given area is really making
+        readers better informed. They can still consider sitting out certain
+        trending stories, and they can do more, across the board, to engage with
+        complexity. Readers, too, can begin to realize they’re being ill-served
+        by the current media cacophony. Let’s hope that, when they search for
+        alternatives, they will still be able to find journalism capable of
+        rising above the din.
+      </p>
+    </div>
+
+    <!-- 放大镜容器 -->
+    <div class="magnifier" id="lens">
+      <!-- 用来做平移+缩放的包裹 -->
+      <div class="magnified" id="magnifiedWrapper">
+        <!-- 放大镜中复制的内容，这里也加上 main-content 类 -->
+        <div class="magnified-content main-content" id="magnifiedContent"></div>
+      </div>
+    </div>
+
+    <script>
+      // 选取原内容和镜头相关元素
+      const original = document.getElementById("originalContent");
+      const lens = document.getElementById("lens");
+      const magnifiedWrapper = document.getElementById("magnifiedWrapper");
+      const magnifiedContent = document.getElementById("magnifiedContent");
+
+      // 把原文的HTML复制到放大镜的内容里
+      magnifiedContent.innerHTML = original.innerHTML;
+
+      // 放大倍数
+      const scale = 2;
+
+      // 镜头半径
+      let lensRadius = lens.offsetWidth / 2;
+
+      // 当鼠标进入原文区域，显示放大镜
+      original.addEventListener("mouseenter", () => {
+        lens.style.display = "block";
+      });
+
+      // 鼠标离开原文区域，隐藏放大镜
+      original.addEventListener("mouseleave", () => {
+        lens.style.display = "none";
+      });
+
+      // 鼠标在原文上移动时，执行放大逻辑
+      original.addEventListener("mousemove", handleMagnify);
+
+      // 如果页面大小变化，我们需要重新计算镜头半径
+      window.addEventListener("resize", () => {
+        lensRadius = lens.offsetWidth / 2;
+        // 也可以在这里根据情况重设 magnifiedContent 的宽度
+        matchWidth();
+      });
+
+      // 为了让放大镜里和原文一样宽，我们可以在初始时、以及 resize 时进行同步
+      matchWidth();
+
+      function matchWidth() {
+        // 获取原文容器宽度
+        const mainWidth = original.offsetWidth;
+        // 让放大镜里的内容也设置同样宽度（可选）
+        magnifiedContent.style.width = mainWidth + "px";
+      }
+
+      function handleMagnify(e) {
+        // 让镜头中心跟随鼠标
+        const left = e.pageX - lensRadius;
+        const top = e.pageY - lensRadius;
+        lens.style.left = left + "px";
+        lens.style.top = top + "px";
+
+        // original 的位置
+        const rect = original.getBoundingClientRect();
+        const offsetX = rect.left + window.scrollX;
+        const offsetY = rect.top + window.scrollY;
+
+        // 鼠标相对于 original 左上角的坐标
+        const posX = e.pageX - offsetX;
+        const posY = e.pageY - offsetY;
+
+        // 计算平移，让鼠标所在点正好位于镜头圆心
+        const translateX = lensRadius - posX * scale;
+        const translateY = lensRadius - posY * scale;
+
+        magnifiedWrapper.style.transform = `
+        translate(${translateX}px, ${translateY}px) scale(${scale})
+      `;
+      }
+    </script>
+
+    <footer class="footer-black">
+      <a href="index.html">home</a>
+    </footer>
+  </body>
+</html>
