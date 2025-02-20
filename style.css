@@ -502,7 +502,7 @@ button:hover {
 /* Footer里的链接设为白色 */
 .footer-black a {
   font-family: "GT Haptik", sans-serif;
-  font-weight: 900;
+  font-weight: 400;
   /* font-style: italic; */
   color: #fff;
   text-decoration: none;
